@@ -7,6 +7,8 @@
   <meta name="description" content="Personalized SAT performance coaching and college admissions strategy from Ascend Prep, founded by a student admitted to MIT, Princeton, and Yale." />
   <meta name="theme-color" content="#0f0a06" />
   <link rel="icon" href="assets/icon.png" />
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   <style>
     :root {
       --bg: #0f0a06;
@@ -264,6 +266,25 @@
     details[open] summary:after { content:'–'; }
     details p { padding: 0 22px 20px; margin:0; }
 
+
+
+    .proof-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .proof-card { border-radius: var(--radius-lg); overflow:hidden; border:1px solid var(--border); background: rgba(25,18,12,.72); box-shadow: 0 24px 70px rgba(0,0,0,.26); }
+    .proof-image { height: 245px; overflow:hidden; background:#fff; position: relative; }
+    .proof-image img { width:100%; height:100%; object-fit: cover; object-position: top center; }
+    .proof-image:after { content:''; position:absolute; inset:auto 0 0; height: 52%; background: linear-gradient(to top, rgba(15,10,6,.88), transparent); pointer-events:none; }
+    .proof-body { padding: 22px; }
+    .proof-body h3 { margin: 0 0 6px; }
+    .proof-body p { margin: 0; font-size: .94rem; }
+    .proof-note { margin-top: 18px; color: var(--dim); font-size: .88rem; }
+
+    .portrait-img { position:absolute; inset:0; width:100%; height:100%; object-fit: cover; object-position: center top; z-index:1; }
+    .portrait-card.real { padding: 0; min-height: 620px; }
+    .portrait-card.real:after { content:''; position:absolute; inset:0; background: linear-gradient(to top, rgba(7,5,3,.78), transparent 54%); z-index:2; }
+    .portrait-caption { position:absolute; left:24px; right:24px; bottom:24px; z-index:3; padding:20px; border-radius:24px; background: rgba(12,8,5,.68); border:1px solid rgba(255,247,237,.10); backdrop-filter: blur(14px); }
+    .portrait-caption b { display:block; color:var(--text); font-size:1.1rem; }
+    .portrait-caption span { color:var(--muted); font-size:.92rem; }
+
     .final-cta { padding: 116px 0 94px; text-align:center; }
     .cta-card { border-radius: 48px; padding: 64px 26px; background:
       radial-gradient(circle at 50% 0%, rgba(229,138,88,.34), transparent 44%),
@@ -292,6 +313,7 @@
       .stats { grid-template-columns: repeat(2, 1fr); }
       .section-head { display:block; }
       .cards { grid-template-columns:1fr; }
+      .proof-grid { grid-template-columns:1fr; }
       .app-mockups { min-height: 520px; }
       .mock-phone.one { left: 0; }
       .mock-phone.two { right: 0; }
@@ -323,6 +345,7 @@
       .mock-phone.two { width: 220px; top: 100px; }
       .mock-phone.three { width: 190px; bottom: 0; left: 22%; }
       .portrait-card { min-height: 420px; }
+      .portrait-card.real { min-height: 520px; }
       .portrait-placeholder { min-height: 365px; }
       .mini-metric-grid { grid-template-columns:1fr; }
     }
@@ -338,7 +361,7 @@
       <a href="#method">Method</a>
       <a href="#founder">Founder</a>
       <a href="#faq">FAQ</a>
-      <a class="nav-mini" href="#book">Free Roadmap</a>
+      <a class="nav-mini" href="https://calendly.com/ascendprep-co/30min" data-calendly>Book Free Call</a>
     </div>
   </nav>
 
@@ -349,7 +372,7 @@
         <h1>Helping students reach their highest potential.</h1>
         <p class="lead">Give your student the guidance they need to earn higher SAT scores, build a stronger college application, and confidently navigate one of the most important milestones of their academic journey.</p>
         <div class="actions">
-          <a class="btn primary" href="#book">Get Your Free Roadmap →</a>
+          <a class="btn primary" href="https://calendly.com/ascendprep-co/30min" data-calendly>Book Free Consultation →</a>
           <a class="btn secondary" href="#services">Explore Services</a>
         </div>
         <div class="proof-line">
@@ -378,6 +401,29 @@
       <div class="stat"><b>100+</b><small>Students mentored</small></div>
     </div>
   </header>
+
+
+  <section class="section wrap" id="proof">
+    <div class="section-head">
+      <div><p class="eyebrow">Admissions Proof</p><h2>Admitted to MIT, Princeton, and Yale.</h2></div>
+      <p class="kicker">Ascend Prep is built around recent, real experience with highly selective admissions — paired with a structured SAT system and practical coaching for today's students.</p>
+    </div>
+    <div class="proof-grid">
+      <article class="proof-card">
+        <div class="proof-image"><img src="assets/mit.jpg" alt="MIT admission letter screenshot"></div>
+        <div class="proof-body"><h3>MIT Class of 2030</h3><p>Official admissions portal screenshot.</p></div>
+      </article>
+      <article class="proof-card">
+        <div class="proof-image"><img src="assets/princeton.jpg" alt="Princeton University admission letter screenshot"></div>
+        <div class="proof-body"><h3>Princeton Class of 2030</h3><p>Official admissions letter screenshot.</p></div>
+      </article>
+      <article class="proof-card">
+        <div class="proof-image"><img src="assets/yale.jpg" alt="Yale University admission letter screenshot"></div>
+        <div class="proof-body"><h3>Yale Class of 2030</h3><p>Official admissions portal screenshot.</p></div>
+      </article>
+    </div>
+    <p class="proof-note">Shown as credibility proof only. Ascend Prep is not affiliated with MIT, Princeton, Yale, or the College Board, and admissions outcomes are never guaranteed.</p>
+  </section>
 
   <main>
     <section class="section wrap" id="why">
@@ -412,7 +458,7 @@
               <li>Score strategy for Math and Reading & Writing</li>
             </ul>
           </div>
-          <a class="btn primary" href="#book">Book Free Roadmap</a>
+          <a class="btn primary" href="https://calendly.com/ascendprep-co/30min" data-calendly>Book Free Consultation</a>
           <p class="service-note">Founding rate available for the first group of students.</p>
         </article>
 
@@ -455,7 +501,7 @@
             <div class="mini-metric"><b>Progress tracking</b><span>XP, streaks, goals, weak spots</span></div>
             <div class="mini-metric"><b>Included access</b><span>For tutoring students</span></div>
           </div>
-          <div class="actions"><a class="btn primary" href="#book">Start With a Free Roadmap</a></div>
+          <div class="actions"><a class="btn primary" href="https://calendly.com/ascendprep-co/30min" data-calendly>Book Free Consultation</a></div>
         </div>
         <div class="app-mockups">
           <img class="mock-phone one" src="assets/dashboard.png" alt="Ascend dashboard">
@@ -483,12 +529,9 @@
 
     <section class="section wrap" id="founder">
       <div class="founder">
-        <div class="portrait-card glass">
-          <div class="portrait-placeholder">
-            <img src="assets/adaptive-icon.png" alt="Ascend logo mark">
-            <b>Founder photo here</b>
-            <p>Replace this placeholder with your professional headshot before launch.</p>
-          </div>
+        <div class="portrait-card glass real">
+          <img class="portrait-img" src="assets/headshot.jpg" alt="Hasin Shaykat, founder of Ascend Prep">
+          <div class="portrait-caption"><b>Hasin Shaykat</b><span>Founder of Ascend Prep · Admitted to MIT, Princeton & Yale</span></div>
         </div>
         <div>
           <p class="eyebrow">Meet the Founder</p>
@@ -510,7 +553,7 @@
           <p class="eyebrow">Founding Families</p>
           <h2>Accepting the first cohort now.</h2>
           <p class="kicker">Ascend Prep is currently accepting a limited number of founding families. Early students receive personalized coaching while helping shape the Ascend App through feedback.</p>
-          <div class="actions"><a class="btn primary" href="#book">Apply for a Free Roadmap</a><a class="btn secondary" href="#faq">Read FAQ</a></div>
+          <div class="actions"><a class="btn primary" href="https://calendly.com/ascendprep-co/30min" data-calendly>Book Free Consultation</a><a class="btn secondary" href="#faq">Read FAQ</a></div>
         </div>
         <div class="callout">
           <b>Limited spots</b>
@@ -537,8 +580,8 @@
         <p class="eyebrow">Start here</p>
         <h2>Get a free personalized SAT & admissions roadmap.</h2>
         <p>Book a short consultation to discuss your student's goals and receive a clear plan for SAT prep, college strategy, or essay support.</p>
-        <div class="actions" style="justify-content:center"><a class="btn primary" href="https://calendly.com/your-link" target="_blank" rel="noopener">Book Free Consultation</a><a class="btn secondary" href="mailto:hello@ascendprep.co">Email Ascend Prep</a></div>
-        <p style="font-size:.86rem;color:var(--dim);margin-top:18px">Replace the Calendly and email links before publishing.</p>
+        <div class="actions" style="justify-content:center"><a class="btn primary" href="https://calendly.com/ascendprep-co/30min" data-calendly>Book Free Consultation</a><a class="btn secondary" href="mailto:ascendprep.co@gmail.com">Email Ascend Prep</a></div>
+        <p style="font-size:.86rem;color:var(--dim);margin-top:18px">The consultation opens in a Calendly popup. If it does not load, it will open in a new tab.</p>
       </div>
     </section>
   </main>
@@ -546,7 +589,7 @@
   <footer class="wrap">
     <div class="footer-grid">
       <div class="brand"><img src="assets/icon.png" alt="Ascend logo"><span>Ascend Prep</span></div>
-      <div class="footer-links"><a href="#services">Services</a><a href="#app">App</a><a href="#founder">Founder</a><a href="mailto:hello@ascendprep.co">hello@ascendprep.co</a></div>
+      <div class="footer-links"><a href="#services">Services</a><a href="#app">App</a><a href="#founder">Founder</a><a href="mailto:ascendprep.co@gmail.com">ascendprep.co@gmail.com</a></div>
     </div>
     <p style="margin-top:20px;font-size:.86rem">© 2026 Ascend Prep. SAT and college admissions outcomes are not guaranteed. Ascend Prep is not affiliated with College Board, MIT, Princeton, or Yale.</p>
   </footer>
@@ -556,6 +599,18 @@
     const menu = document.getElementById('menu');
     menu?.addEventListener('click', () => nav.classList.toggle('open'));
     document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+    const calendlyUrl = 'https://calendly.com/ascendprep-co/30min';
+    function openCalendly(event) {
+      event.preventDefault();
+      if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+        window.Calendly.initPopupWidget({ url: calendlyUrl });
+      } else {
+        window.open(calendlyUrl, '_blank', 'noopener,noreferrer');
+      }
+    }
+    document.querySelectorAll('[data-calendly]').forEach(link => link.addEventListener('click', openCalendly));
+
   </script>
 </body>
 </html>
