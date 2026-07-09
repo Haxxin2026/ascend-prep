@@ -9,361 +9,22 @@
   <link rel="icon" href="assets/icon.png" />
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-  <style>
-    :root {
-      --bg: #0f0a06;
-      --bg-deep: #070503;
-      --panel: rgba(27, 22, 15, 0.82);
-      --panel-solid: #19130d;
-      --panel-2: #21170f;
-      --border: rgba(214, 132, 78, 0.22);
-      --border-strong: rgba(214, 104, 55, 0.48);
-      --text: #fff7ed;
-      --muted: #b7a68f;
-      --dim: #7f705d;
-      --orange: #cf6538;
-      --orange-2: #aa4727;
-      --orange-3: #e58a58;
-      --green: #a5c885;
-      --red: #ce5940;
-      --shadow: 0 28px 80px rgba(0,0,0,.42);
-      --radius-xl: 34px;
-      --radius-lg: 26px;
-      --radius-md: 18px;
-      --serif: Georgia, 'Times New Roman', Times, serif;
-      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 17% 9%, rgba(207, 101, 56, .18), transparent 32%),
-        radial-gradient(circle at 85% 8%, rgba(207, 101, 56, .11), transparent 30%),
-        radial-gradient(circle at 73% 52%, rgba(207, 101, 56, .08), transparent 35%),
-        linear-gradient(135deg, #0f0a06 0%, #110b07 45%, #080503 100%);
-      color: var(--text);
-      font-family: var(--sans);
-      line-height: 1.55;
-      overflow-x: hidden;
-    }
-    body:before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-      background-size: 72px 72px;
-      mask-image: linear-gradient(to bottom, black, transparent 78%);
-      z-index: -2;
-    }
-    body:after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(15,10,6,.05), rgba(7,5,3,.28));
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
-    .section { padding: 104px 0; position: relative; }
-    .eyebrow {
-      margin: 0 0 14px;
-      color: var(--orange-3);
-      letter-spacing: .23em;
-      text-transform: uppercase;
-      font-size: .82rem;
-      font-weight: 800;
-    }
-    .kicker { color: var(--muted); font-size: 1.08rem; max-width: 710px; }
-    h1, h2, h3, p { margin-top: 0; }
-    h1, h2 {
-      font-family: var(--serif);
-      font-weight: 700;
-      font-style: italic;
-      letter-spacing: -.055em;
-      line-height: .94;
-    }
-    h1 { font-size: clamp(4.2rem, 8.3vw, 8.7rem); max-width: 760px; margin-bottom: 26px; }
-    h2 { font-size: clamp(3rem, 6vw, 6rem); margin-bottom: 22px; }
-    h3 { font-size: 1.35rem; line-height: 1.18; margin-bottom: 12px; letter-spacing: -.02em; }
-    p { color: var(--muted); }
-
-    .glass {
-      border: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(31,24,16,.82), rgba(21,16,10,.72));
-      box-shadow: 0 1px 0 rgba(255,255,255,.03) inset, var(--shadow);
-      backdrop-filter: blur(16px);
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 54px;
-      padding: 0 22px;
-      border-radius: 999px;
-      font-weight: 800;
-      transition: transform .2s ease, border-color .2s ease, background .2s ease, opacity .2s ease;
-      cursor: pointer;
-      white-space: nowrap;
-      border: 1px solid transparent;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn.primary {
-      color: #fff7ed;
-      background: linear-gradient(135deg, var(--orange), var(--orange-2));
-      box-shadow: 0 14px 35px rgba(207,101,56,.26);
-    }
-    .btn.secondary { border-color: var(--border); background: rgba(255,255,255,.03); color: var(--text); }
-    .btn.secondary:hover { border-color: var(--border-strong); background: rgba(207,101,56,.08); }
-
-    .nav {
-      position: sticky;
-      top: 14px;
-      z-index: 1000;
-      width: min(1180px, calc(100% - 40px));
-      margin: 14px auto 0;
-      padding: 12px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 1px solid rgba(214,132,78,.18);
-      border-radius: 999px;
-      background: rgba(12,8,5,.72);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 20px 50px rgba(0,0,0,.22);
-    }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: -.02em; }
-    .brand img { width: 33px; height: 33px; border-radius: 10px; }
-    .brand span { font-family: var(--serif); font-style: italic; font-size: 1.3rem; letter-spacing: -.04em; }
-    .nav-links { display: flex; align-items: center; gap: 25px; font-size: .94rem; color: var(--muted); }
-    .nav-links a:hover { color: var(--text); }
-    .nav-mini { padding: 10px 16px; border-radius: 999px; color: var(--text) !important; background: rgba(207,101,56,.14); border: 1px solid rgba(207,101,56,.28); }
-    .menu { display: none; background: transparent; border: 0; width: 42px; height: 42px; border-radius: 99px; color: var(--text); }
-    .menu span { display:block; width: 20px; height: 2px; margin: 5px auto; background: var(--text); }
-
-    .hero { padding: 100px 0 56px; }
-    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: center; min-height: 760px; }
-    .hero p.lead { font-size: clamp(1.08rem, 1.8vw, 1.34rem); max-width: 660px; margin-bottom: 28px; }
-    .actions { display: flex; gap: 14px; flex-wrap: wrap; margin: 30px 0 18px; }
-    .proof-line { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-    .pill {
-      border: 1px solid rgba(214,132,78,.24);
-      background: rgba(207,101,56,.09);
-      color: #eadbca;
-      border-radius: 999px;
-      padding: 9px 13px;
-      font-size: .92rem;
-    }
-
-    .hero-stage { min-height: 690px; position: relative; }
-    .phone-orbit { position: relative; width: min(470px, 100%); margin: 0 auto; height: 690px; }
-    .orbital-glow {
-      position: absolute; inset: 70px 0 auto 10px; height: 500px;
-      background: radial-gradient(circle, rgba(207,101,56,.28), transparent 68%);
-      filter: blur(20px); opacity: .75;
-    }
-    .phone {
-      position: absolute;
-      border-radius: 34px;
-      border: 1px solid rgba(214,132,78,.26);
-      box-shadow: 0 36px 95px rgba(0,0,0,.55);
-      overflow: hidden;
-      background: #100b07;
-    }
-    .phone.main { width: 330px; left: 48px; top: 54px; z-index: 4; transform: rotate(-2deg); }
-    .phone.back { width: 288px; right: 4px; top: 145px; z-index: 2; opacity: .92; transform: rotate(5deg); filter: saturate(.95); }
-    .phone.test { width: 282px; left: 0; bottom: 0; z-index: 3; transform: rotate(2deg); opacity: .95; }
-    .float-card {
-      position: absolute;
-      z-index: 10;
-      display: flex;
-      gap: 13px;
-      align-items: center;
-      padding: 16px 18px;
-      border-radius: 22px;
-      min-width: 218px;
-    }
-    .float-card strong { display: block; color: var(--text); font-size: 1.05rem; line-height: 1.05; }
-    .float-card span { color: var(--muted); font-size: .86rem; }
-    .float-card .emoji { font-size: 1.55rem; }
-    .float-card.top { top: 3px; right: 0; }
-    .float-card.bottom { left: 0; top: 520px; }
-
-    .stats { margin-top: 26px; border-radius: var(--radius-xl); padding: 20px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-    .stat { padding: 18px 14px; border-radius: 22px; text-align:center; background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.05); }
-    .stat b { display:block; font-size: 1.56rem; color: var(--text); letter-spacing: -.02em; }
-    .stat small { display:block; color: var(--muted); margin-top: 4px; }
-
-    .section-head { display:flex; justify-content:space-between; gap:30px; align-items:end; margin-bottom: 34px; }
-    .section-head p { max-width: 540px; }
-    .cards { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .card { border-radius: var(--radius-lg); padding: 28px; border:1px solid var(--border); background: linear-gradient(145deg, rgba(28,22,15,.85), rgba(18,13,9,.72)); box-shadow: 0 20px 65px rgba(0,0,0,.22); }
-    .icon-badge { width: 52px; height: 52px; display:grid; place-items:center; border-radius: 18px; background: rgba(207,101,56,.14); border:1px solid rgba(207,101,56,.25); color: var(--orange-3); font-size: 1.45rem; margin-bottom: 18px; }
-    .card p { margin-bottom: 0; }
-
-    .services-grid { display:grid; grid-template-columns: 1.05fr .95fr; gap: 20px; align-items:stretch; }
-    .service-card { padding: 34px; border-radius: var(--radius-xl); position: relative; overflow:hidden; }
-    .service-card:before { content:''; position:absolute; right:-90px; top:-90px; width:230px; height:230px; background: radial-gradient(circle, rgba(207,101,56,.23), transparent 66%); }
-    .price { margin: 22px 0 18px; display:flex; align-items:flex-end; gap: 8px; }
-    .price b { color: var(--text); font-size: 2.35rem; letter-spacing:-.04em; }
-    .price span { color: var(--muted); padding-bottom: 7px; }
-    .list { list-style:none; padding:0; margin:22px 0 26px; display:grid; gap:12px; }
-    .list li { color:#dccfbd; display:flex; gap:10px; align-items:flex-start; }
-    .list li:before { content:'✓'; color: var(--green); font-weight: 900; margin-top: 0; }
-    .feature-service { grid-row: span 2; min-height: 100%; display:flex; flex-direction: column; justify-content: space-between; }
-    .service-note { color: var(--dim); font-size:.88rem; margin-top: 10px; }
-
-    .app-panel { display:grid; grid-template-columns:.88fr 1.12fr; gap: 40px; align-items:center; border-radius: 42px; padding: 44px; overflow:hidden; position:relative; }
-    .app-panel:before { content:''; position:absolute; inset:0; background: radial-gradient(circle at 82% 14%, rgba(207,101,56,.22), transparent 34%); pointer-events:none; }
-    .app-copy, .app-mockups { position:relative; z-index:2; }
-    .app-mockups { min-height: 590px; }
-    .mock-phone { position:absolute; border-radius:32px; overflow:hidden; border:1px solid rgba(214,132,78,.28); box-shadow: 0 34px 80px rgba(0,0,0,.44); }
-    .mock-phone.one { width: 290px; left: 20px; top: 20px; transform: rotate(-4deg); z-index:3; }
-    .mock-phone.two { width: 310px; right: 20px; top: 110px; transform: rotate(4deg); z-index:2; }
-    .mock-phone.three { width: 260px; left: 170px; bottom: 0; transform: rotate(1deg); z-index:4; }
-    .mini-metric-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 24px; }
-    .mini-metric { padding: 17px; border-radius: 18px; background: rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.05); }
-    .mini-metric b { display:block; color: var(--text); }
-    .mini-metric span { color: var(--muted); font-size:.88rem; }
-
-    .method { display:grid; grid-template-columns: .9fr 1.1fr; gap: 34px; align-items: start; }
-    .steps { display:grid; gap: 14px; counter-reset: step; }
-    .step { display:grid; grid-template-columns: 52px 1fr; gap: 16px; align-items:start; padding: 22px; border-radius: 24px; border:1px solid var(--border); background: rgba(25,18,12,.66); }
-    .step:before { counter-increment: step; content: counter(step); width: 52px; height: 52px; display:grid; place-items:center; border-radius: 18px; background: rgba(207,101,56,.14); border:1px solid rgba(207,101,56,.28); color: var(--orange-3); font-weight:900; font-size: 1.2rem; }
-    .step h3 { margin-bottom: 4px; }
-    .step p { margin-bottom: 0; }
-
-    .founder { display:grid; grid-template-columns:.82fr 1.18fr; gap: 42px; align-items:center; }
-    .portrait-card { min-height: 560px; border-radius: 42px; position:relative; overflow:hidden; display:flex; align-items:end; padding: 26px; background: linear-gradient(140deg, rgba(207,101,56,.20), rgba(18,13,9,.85)); }
-    .portrait-card:before { content:''; position:absolute; inset:0; background: radial-gradient(circle at 50% 28%, rgba(207,101,56,.30), transparent 38%); }
-    .portrait-placeholder { position:relative; z-index:2; width:100%; min-height: 500px; border-radius: 32px; border:1px dashed rgba(255,247,237,.20); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding: 24px; background: rgba(7,5,3,.28); }
-    .portrait-placeholder img { width: 96px; height:96px; border-radius: 28px; margin-bottom: 18px; }
-    .portrait-placeholder b { font-family: var(--serif); font-size:2rem; font-style:italic; }
-    .founder-badges { display:flex; flex-wrap:wrap; gap:10px; margin: 22px 0; }
-    .quote-box { border-left: 3px solid var(--orange); padding-left: 20px; margin-top: 28px; color:#dacbb8; font-size:1.08rem; }
-
-    .founding { border-radius: 42px; padding: 42px; display:grid; grid-template-columns: 1fr .72fr; gap: 30px; align-items:center; }
-    .founding h2 { font-size: clamp(2.55rem, 5vw, 4.9rem); }
-    .callout { border-radius: 28px; padding: 28px; background: linear-gradient(135deg, rgba(207,101,56,.18), rgba(14,9,6,.64)); border:1px solid rgba(207,101,56,.26); }
-    .callout b { display:block; color:var(--text); font-size: 2.4rem; letter-spacing:-.04em; }
-    .callout span { color:var(--muted); }
-
-    .faq-grid { display:grid; grid-template-columns: .8fr 1.2fr; gap: 30px; align-items:start; }
-    .faq-list { display:grid; gap: 12px; }
-    details { border-radius: 20px; border:1px solid var(--border); background: rgba(25,18,12,.72); overflow:hidden; }
-    summary { list-style:none; cursor:pointer; padding: 20px 22px; color:var(--text); font-weight:800; display:flex; justify-content:space-between; gap:20px; }
-    summary::-webkit-details-marker { display:none; }
-    summary:after { content:'+'; color: var(--orange-3); font-size:1.3rem; }
-    details[open] summary:after { content:'–'; }
-    details p { padding: 0 22px 20px; margin:0; }
-
-
-
-    .proof-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .proof-card { border-radius: var(--radius-lg); overflow:hidden; border:1px solid var(--border); background: rgba(25,18,12,.72); box-shadow: 0 24px 70px rgba(0,0,0,.26); }
-    .proof-image { height: 245px; overflow:hidden; background:#fff; position: relative; }
-    .proof-image img { width:100%; height:100%; object-fit: cover; object-position: top center; }
-    .proof-image:after { content:''; position:absolute; inset:auto 0 0; height: 52%; background: linear-gradient(to top, rgba(15,10,6,.88), transparent); pointer-events:none; }
-    .proof-body { padding: 22px; }
-    .proof-body h3 { margin: 0 0 6px; }
-    .proof-body p { margin: 0; font-size: .94rem; }
-    .proof-note { margin-top: 18px; color: var(--dim); font-size: .88rem; }
-
-    .portrait-img { position:absolute; inset:0; width:100%; height:100%; object-fit: cover; object-position: center top; z-index:1; }
-    .portrait-card.real { padding: 0; min-height: 620px; }
-    .portrait-card.real:after { content:''; position:absolute; inset:0; background: linear-gradient(to top, rgba(7,5,3,.78), transparent 54%); z-index:2; }
-    .portrait-caption { position:absolute; left:24px; right:24px; bottom:24px; z-index:3; padding:20px; border-radius:24px; background: rgba(12,8,5,.68); border:1px solid rgba(255,247,237,.10); backdrop-filter: blur(14px); }
-    .portrait-caption b { display:block; color:var(--text); font-size:1.1rem; }
-    .portrait-caption span { color:var(--muted); font-size:.92rem; }
-
-    .final-cta { padding: 116px 0 94px; text-align:center; }
-    .cta-card { border-radius: 48px; padding: 64px 26px; background:
-      radial-gradient(circle at 50% 0%, rgba(229,138,88,.34), transparent 44%),
-      linear-gradient(135deg, rgba(207,101,56,.22), rgba(15,10,6,.88)); border:1px solid rgba(214,132,78,.30); box-shadow: var(--shadow); }
-    .cta-card h2 { max-width: 930px; margin: 0 auto 20px; }
-    .cta-card p { max-width: 680px; margin: 0 auto 30px; }
-
-    footer { padding: 34px 0 50px; color: var(--dim); border-top:1px solid rgba(214,132,78,.12); }
-    .footer-grid { display:flex; justify-content:space-between; gap: 20px; align-items:center; flex-wrap:wrap; }
-    .footer-links { display:flex; gap:18px; flex-wrap:wrap; }
-
-    .reveal { opacity:0; transform: translateY(20px); animation: reveal .7s ease forwards; }
-    .d1 { animation-delay: .1s; } .d2 { animation-delay: .2s; } .d3 { animation-delay: .3s; }
-    @keyframes reveal { to { opacity:1; transform:none; } }
-
-    @media (max-width: 980px) {
-      .nav { border-radius: 24px; align-items:flex-start; }
-      .menu { display:block; }
-      .nav-links { display:none; position:absolute; top:64px; left:0; right:0; margin:8px 0 0; padding: 18px; border-radius: 24px; flex-direction:column; align-items:stretch; background: rgba(12,8,5,.94); border: 1px solid rgba(214,132,78,.18); }
-      .nav.open .nav-links { display:flex; }
-      .hero-grid, .services-grid, .app-panel, .method, .founder, .founding, .faq-grid { grid-template-columns:1fr; }
-      .hero { padding-top: 74px; }
-      .hero-grid { min-height: auto; gap: 28px; }
-      .hero-stage { min-height: 620px; }
-      .phone-orbit { height: 620px; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      .section-head { display:block; }
-      .cards { grid-template-columns:1fr; }
-      .proof-grid { grid-template-columns:1fr; }
-      .app-mockups { min-height: 520px; }
-      .mock-phone.one { left: 0; }
-      .mock-phone.two { right: 0; }
-      .mock-phone.three { left: 22%; }
-    }
-
-    @media (max-width: 620px) {
-      .wrap, .nav { width: min(100% - 24px, 1180px); }
-      .section { padding: 72px 0; }
-      h1 { font-size: clamp(3.5rem, 18vw, 5.4rem); }
-      h2 { font-size: clamp(2.7rem, 14vw, 4.2rem); }
-      .actions { flex-direction: column; }
-      .btn { width:100%; }
-      .proof-line { gap: 8px; }
-      .pill { font-size:.84rem; }
-      .stats { grid-template-columns:1fr; }
-      .hero-stage { min-height: 560px; margin-top: 20px; }
-      .phone-orbit { height: 560px; }
-      .phone.main { width: 245px; left: 38px; top: 45px; }
-      .phone.back { width: 216px; right: -4px; top: 130px; }
-      .phone.test { width: 210px; left: 0; bottom: 24px; }
-      .float-card { min-width: 180px; padding: 12px 14px; border-radius: 18px; }
-      .float-card.top { right: 4px; top: 0; }
-      .float-card.bottom { top: 450px; left: 10px; }
-      .section-head p { margin-top: 12px; }
-      .service-card, .app-panel, .founding, .cta-card { padding: 28px 20px; border-radius: 30px; }
-      .app-mockups { min-height: 450px; }
-      .mock-phone.one { width: 205px; top: 20px; }
-      .mock-phone.two { width: 220px; top: 100px; }
-      .mock-phone.three { width: 190px; bottom: 0; left: 22%; }
-      .portrait-card { min-height: 420px; }
-      .portrait-card.real { min-height: 520px; }
-      .portrait-placeholder { min-height: 365px; }
-      .mini-metric-grid { grid-template-columns:1fr; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
   <nav class="nav" id="nav">
-    <a class="brand" href="#top" aria-label="Ascend Prep home"><img src="assets/icon.png" alt="Ascend logo"><span>Ascend Prep</span></a>
+    <a class="brand" href="index.html" aria-label="Ascend Prep home"><img src="assets/icon.png" alt="Ascend logo"><span>Ascend Prep</span></a>
     <button class="menu" id="menu" aria-label="Open navigation"><span></span><span></span></button>
     <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#app">Ascend App</a>
-      <a href="#method">Method</a>
-      <a href="#founder">Founder</a>
-      <a href="#faq">FAQ</a>
+      <a href="sat-tutoring.html" class="">SAT Tutoring</a>
+      <a href="college-consulting.html" class="">College Consulting</a>
+      <a href="index.html#app">Ascend App</a>
+      <a href="index.html#founder">Founder</a>
+      <a href="index.html#faq">FAQ</a>
       <a class="nav-mini" href="https://calendly.com/ascendprep-co/30min" data-calendly>Book Free Call</a>
     </div>
   </nav>
+
 
   <header class="hero wrap" id="top">
     <div class="hero-grid">
@@ -382,14 +43,10 @@
           <span class="pill">100+ students mentored</span>
         </div>
       </div>
-      <div class="hero-stage reveal d2" aria-label="Ascend app preview">
-        <div class="phone-orbit">
-          <div class="orbital-glow"></div>
-          <div class="float-card glass top"><span class="emoji">🎓</span><div><strong>Elite admissions insight</strong><span>Recently navigated the process</span></div></div>
-          <img class="phone main" src="assets/dashboard.png" alt="Ascend app dashboard preview">
-          <img class="phone back" src="assets/practice.png" alt="Ascend app SAT question preview">
-          <img class="phone test" src="assets/tests.png" alt="Ascend practice tests preview">
-          <div class="float-card glass bottom"><span class="emoji">🔥</span><div><strong>Ascend App included</strong><span>Practice, homework, progress</span></div></div>
+      <div class="hero-stage reveal d2">
+        <div class="hero-photo-card glass">
+          <img class="hero-photo" src="assets/headshot.jpg" alt="Hasin Shaykat, founder of Ascend Prep">
+          <div class="photo-badge"><b>Hasin Shaykat</b><span>Founder of Ascend Prep · Admitted to MIT, Princeton & Yale</span></div>
         </div>
       </div>
     </div>
@@ -402,90 +59,29 @@
     </div>
   </header>
 
-
-  <section class="section wrap" id="proof">
-    <div class="section-head">
-      <div><p class="eyebrow">Admissions Proof</p><h2>Admitted to MIT, Princeton, and Yale.</h2></div>
-      <p class="kicker">Ascend Prep is built around recent, real experience with highly selective admissions — paired with a structured SAT system and practical coaching for today's students.</p>
-    </div>
-    <div class="proof-grid">
-      <article class="proof-card">
-        <div class="proof-image"><img src="assets/mit.jpg" alt="MIT admission letter screenshot"></div>
-        <div class="proof-body"><h3>MIT Class of 2030</h3><p>Official admissions portal screenshot.</p></div>
-      </article>
-      <article class="proof-card">
-        <div class="proof-image"><img src="assets/princeton.jpg" alt="Princeton University admission letter screenshot"></div>
-        <div class="proof-body"><h3>Princeton Class of 2030</h3><p>Official admissions letter screenshot.</p></div>
-      </article>
-      <article class="proof-card">
-        <div class="proof-image"><img src="assets/yale.jpg" alt="Yale University admission letter screenshot"></div>
-        <div class="proof-body"><h3>Yale Class of 2030</h3><p>Official admissions portal screenshot.</p></div>
-      </article>
-    </div>
-    <p class="proof-note">Shown as credibility proof only. Ascend Prep is not affiliated with MIT, Princeton, Yale, or the College Board, and admissions outcomes are never guaranteed.</p>
-  </section>
-
   <main>
-    <section class="section wrap" id="why">
+    <section class="section wrap" id="proof">
       <div class="section-head">
-        <div><p class="eyebrow">Why Ascend Prep</p><h2>Not just tutoring. A system.</h2></div>
-        <p class="kicker">Most tutoring ends when the session is over. Ascend Prep combines one-on-one coaching, structured assignments, progress tracking, and the Ascend SAT platform so students keep improving between sessions.</p>
+        <div><p class="eyebrow">Admissions Proof</p><h2>Admitted to MIT, Princeton, and Yale.</h2></div>
+        <p class="kicker">Ascend Prep is built around recent, real experience with selective admissions — paired with a structured SAT system and practical coaching for today's students.</p>
       </div>
-      <div class="cards">
-        <article class="card"><div class="icon-badge">◎</div><h3>Personalized strategy</h3><p>No generic lesson plans. Every student receives a roadmap based on their goals, timeline, strengths, and weak spots.</p></article>
-        <article class="card"><div class="icon-badge">↗</div><h3>Modern practice</h3><p>Students use Ascend for homework, practice questions, progress tracking, and full-length SAT preparation.</p></article>
-        <article class="card"><div class="icon-badge">✦</div><h3>Recent elite admissions perspective</h3><p>Guidance from someone who recently navigated a competitive admissions cycle and was admitted to MIT, Princeton, and Yale.</p></article>
+      <div class="proof-grid">
+        <article class="proof-card"><div class="proof-image"><img src="assets/mit.jpg" alt="MIT admission letter screenshot"></div><div class="proof-body"><h3>MIT Class of 2030</h3><p>Official admissions portal screenshot.</p></div></article>
+        <article class="proof-card"><div class="proof-image"><img src="assets/princeton.jpg" alt="Princeton University admission letter screenshot"></div><div class="proof-body"><h3>Princeton Class of 2030</h3><p>Official admissions letter screenshot.</p></div></article>
+        <article class="proof-card"><div class="proof-image"><img src="assets/yale.jpg" alt="Yale University admission letter screenshot"></div><div class="proof-body"><h3>Yale Class of 2030</h3><p>Official admissions portal screenshot.</p></div></article>
       </div>
+      <p class="proof-note">Shown as credibility proof only. Ascend Prep is not affiliated with MIT, Princeton, Yale, or the College Board, and admissions outcomes are never guaranteed.</p>
     </section>
 
     <section class="section wrap" id="services">
       <div class="section-head">
-        <div><p class="eyebrow">Services</p><h2>Launch offers for founding families.</h2></div>
-        <p class="kicker">Simple, premium, and focused. Start with what your student needs most, then build a plan around test prep, essays, extracurriculars, and admissions strategy.</p>
+        <div><p class="eyebrow">Services</p><h2>Focused support for SAT scores and applications.</h2></div>
+        <p class="kicker">Start with the path your student needs most. Every program begins with a free roadmap call so we can understand goals, timeline, and fit.</p>
       </div>
-      <div class="services-grid">
-        <article class="service-card glass feature-service">
-          <div>
-            <p class="eyebrow">Most Popular</p>
-            <h3>SAT Performance Coaching</h3>
-            <p>One-on-one SAT prep designed to improve score, confidence, timing, and consistency.</p>
-            <div class="price"><b>$99</b><span>/ hour founding rate</span></div>
-            <ul class="list">
-              <li>Weekly 1-on-1 sessions</li>
-              <li>Custom study plan and practice schedule</li>
-              <li>Homework through Ascend App</li>
-              <li>Practice test analysis and weak-spot review</li>
-              <li>Score strategy for Math and Reading & Writing</li>
-            </ul>
-          </div>
-          <a class="btn primary" href="https://calendly.com/ascendprep-co/30min" data-calendly>Book Free Consultation</a>
-          <p class="service-note">Founding rate available for the first group of students.</p>
-        </article>
-
-        <article class="service-card glass">
-          <p class="eyebrow">Admissions</p>
-          <h3>College Admissions Strategy</h3>
-          <p>Application planning for ambitious students targeting selective colleges.</p>
-          <div class="price"><b>$120</b><span>/ hour</span></div>
-          <ul class="list">
-            <li>College list planning</li>
-            <li>Activities and extracurricular strategy</li>
-            <li>Timeline planning and application organization</li>
-            <li>Interview preparation</li>
-          </ul>
-        </article>
-
-        <article class="service-card glass">
-          <p class="eyebrow">Essays</p>
-          <h3>Essay Coaching</h3>
-          <p>Guidance for Common App essays and supplements that helps students sound focused, authentic, and memorable.</p>
-          <div class="price"><b>$120</b><span>/ hour</span></div>
-          <ul class="list">
-            <li>Brainstorming and topic selection</li>
-            <li>Structure, revisions, and polish</li>
-            <li>Supplemental essay strategy</li>
-          </ul>
-        </article>
+      <div class="cards">
+        <article class="card"><div class="icon-badge">📈</div><h3>SAT Performance Coaching</h3><p>Weekly 1-on-1 SAT tutoring with homework, practice test review, Ascend App access, and a custom score-improvement plan.</p><a class="card-link" href="sat-tutoring.html">View SAT program →</a></article>
+        <article class="card"><div class="icon-badge">🏛️</div><h3>College Admissions Strategy</h3><p>Personalized support for college list building, activities positioning, essays, supplements, interviews, and application planning.</p><a class="card-link" href="college-consulting.html">View admissions program →</a></article>
+        <article class="card"><div class="icon-badge">✍️</div><h3>Essay Coaching</h3><p>Brainstorming, structure, revision, and polish for Common App essays and school-specific supplements.</p><a class="card-link" href="college-consulting.html#essays">View essay support →</a></article>
       </div>
     </section>
 
@@ -493,8 +89,8 @@
       <div class="app-panel glass">
         <div class="app-copy">
           <p class="eyebrow">Powered by Ascend</p>
-          <h2>Every student gets more than a Zoom call.</h2>
-          <p class="kicker">The Ascend App is free during the beta period and included for SAT coaching students. It turns tutoring into a complete learning system with practice, homework, analytics, and accountability.</p>
+          <h2>Every SAT student gets more than a Zoom call.</h2>
+          <p class="kicker">The Ascend App is included for SAT coaching students. It turns tutoring into a complete learning system with practice, homework, analytics, and accountability.</p>
           <div class="mini-metric-grid">
             <div class="mini-metric"><b>1,400+ questions</b><span>Growing SAT question bank</span></div>
             <div class="mini-metric"><b>10 practice tests</b><span>Full-length SAT-style exams</span></div>
@@ -513,11 +109,7 @@
 
     <section class="section wrap" id="method">
       <div class="method">
-        <div>
-          <p class="eyebrow">The Ascend Method</p>
-          <h2>A clear path from goals to growth.</h2>
-          <p class="kicker">Parents should never wonder what is happening between sessions. Ascend Prep gives every student a structured roadmap and a visible system for improvement.</p>
-        </div>
+        <div><p class="eyebrow">The Ascend Method</p><h2>A clear path from goals to growth.</h2><p class="kicker">Parents should never wonder what is happening between sessions. Ascend Prep gives every student a structured roadmap and a visible system for improvement.</p></div>
         <div class="steps">
           <div class="step"><div><h3>Free roadmap consultation</h3><p>We identify the student's goals, timeline, current challenges, and best next move.</p></div></div>
           <div class="step"><div><h3>Personalized plan</h3><p>The student gets a clear strategy for SAT prep, applications, essays, or all three.</p></div></div>
@@ -529,88 +121,49 @@
 
     <section class="section wrap" id="founder">
       <div class="founder">
-        <div class="portrait-card glass real">
-          <img class="portrait-img" src="assets/headshot.jpg" alt="Hasin Shaykat, founder of Ascend Prep">
-          <div class="portrait-caption"><b>Hasin Shaykat</b><span>Founder of Ascend Prep · Admitted to MIT, Princeton & Yale</span></div>
-        </div>
-        <div>
-          <p class="eyebrow">Meet the Founder</p>
-          <h2>Built by a student who recently did it.</h2>
-          <p class="kicker">Hi, I'm Hasin Shaykat, founder of Ascend Prep. I scored a 1560 SAT, was admitted to MIT, Princeton, and Yale, and have mentored 100+ students through tutoring, academic support, and application guidance.</p>
-          <div class="founder-badges">
-            <span class="pill">1560 SAT</span><span class="pill">800 Math</span><span class="pill">760 Reading & Writing</span><span class="pill">MIT · Princeton · Yale</span><span class="pill">Founder of Ascend</span>
-          </div>
-          <p>Having recently navigated one of the most competitive admissions cycles, I understand what today's students are up against: testing pressure, packed schedules, extracurricular choices, essays, and the uncertainty of selective admissions.</p>
-          <p>Ascend Prep exists to give students a mentor, a strategy, and a system that helps them present their strongest application and build confidence along the way.</p>
-          <div class="quote-box">The goal is not to promise a specific college outcome. The goal is to help every student build the strongest version of their academic story.</div>
-        </div>
+        <div class="portrait-card glass"><img class="portrait-img" src="assets/headshot.jpg" alt="Hasin Shaykat, founder of Ascend Prep"><div class="portrait-caption"><b>Hasin Shaykat</b><span>Founder of Ascend Prep · Admitted to MIT, Princeton & Yale</span></div></div>
+        <div><p class="eyebrow">Meet the Founder</p><h2>Built by a student who recently did it.</h2><p class="kicker">Hi, I'm Hasin Shaykat, founder of Ascend Prep. I scored a 1560 SAT, was admitted to MIT, Princeton, and Yale, and have mentored 100+ students through tutoring, academic support, and application guidance.</p><div class="founder-badges"><span class="pill">1560 SAT</span><span class="pill">800 Math</span><span class="pill">760 Reading & Writing</span><span class="pill">MIT · Princeton · Yale</span><span class="pill">Founder of Ascend</span></div><p>Having recently navigated one of the most competitive admissions cycles, I understand what today's students are up against: testing pressure, packed schedules, extracurricular choices, essays, and selective admissions uncertainty.</p><div class="quote-box">The goal is not to promise a specific college outcome. The goal is to help every student build the strongest version of their academic story.</div></div>
       </div>
     </section>
 
-    <section class="section wrap">
-      <div class="founding glass">
-        <div>
-          <p class="eyebrow">Founding Families</p>
-          <h2>Accepting the first cohort now.</h2>
-          <p class="kicker">Ascend Prep is currently accepting a limited number of founding families. Early students receive personalized coaching while helping shape the Ascend App through feedback.</p>
-          <div class="actions"><a class="btn primary" href="https://calendly.com/ascendprep-co/30min" data-calendly>Book Free Consultation</a><a class="btn secondary" href="#faq">Read FAQ</a></div>
-        </div>
-        <div class="callout">
-          <b>Limited spots</b>
-          <span>Designed for students who want serious growth before the next SAT or application cycle.</span>
-        </div>
+    <section class="section wrap" id="testimonials">
+      <div class="section-head"><div><p class="eyebrow">Student Trust</p><h2>Built for founding families.</h2></div><p class="kicker">Ascend Prep is currently accepting its first cohort of paying families. Public testimonials will be added as students complete their first coaching cycles.</p></div>
+      <div class="testimonial-grid">
+        <article class="testimonial"><p>Personalized support from someone who has recently succeeded in the SAT and elite admissions process.</p><b>Current proof</b><span>1560 SAT · MIT, Princeton, Yale admitted</span></article>
+        <article class="testimonial"><p>More than a session: students receive structure, homework, practice, and progress tracking through the Ascend App.</p><b>Student system</b><span>Ascend App included for SAT tutoring</span></article>
+        <article class="testimonial"><p>Founding students help shape the Ascend learning system while receiving close 1-on-1 coaching.</p><b>Founding cohort</b><span>Limited spots available</span></article>
       </div>
     </section>
 
     <section class="section wrap" id="faq">
       <div class="faq-grid">
-        <div><p class="eyebrow">FAQ</p><h2>Questions parents usually ask.</h2><p class="kicker">Keep this simple on launch. You can expand this section after real parent calls reveal the most common concerns.</p></div>
+        <div><p class="eyebrow">FAQ</p><h2>Questions parents usually ask.</h2><p class="kicker">Clear answers before the consultation.</p></div>
         <div class="faq-list">
           <details open><summary>Who is Ascend Prep best for?</summary><p>Ambitious high school students, especially rising sophomores, juniors, and seniors preparing for the SAT, college applications, essays, interviews, or selective admissions strategy.</p></details>
-          <details><summary>Are results guaranteed?</summary><p>No specific SAT score or admissions outcome can be guaranteed. Ascend Prep provides personalized coaching, structure, feedback, and accountability to help students improve and present their strongest work.</p></details>
-          <details><summary>How are sessions held?</summary><p>Sessions can be held online by Zoom or Google Meet. Students receive assignments and practice work between sessions through the Ascend platform.</p></details>
+          <details><summary>How are sessions held?</summary><p>Sessions are online through Zoom or Google Meet. Students receive assignments and practice work between sessions through the Ascend platform.</p></details>
           <details><summary>Is the Ascend App included?</summary><p>Yes. SAT coaching students receive complimentary access. During the beta period, the app can also be free for broader user feedback.</p></details>
+          <details><summary>Are results guaranteed?</summary><p>No specific SAT score or admissions outcome can be guaranteed. Ascend Prep provides personalized coaching, structure, feedback, and accountability to help students improve and present their strongest work.</p></details>
           <details><summary>What happens in the free roadmap call?</summary><p>We'll discuss the student's goals, current score or application stage, timeline, and recommended next steps. The goal is to leave with a clear plan, not a generic sales pitch.</p></details>
         </div>
       </div>
     </section>
 
-    <section class="final-cta wrap" id="book">
-      <div class="cta-card">
-        <p class="eyebrow">Start here</p>
-        <h2>Get a free personalized SAT & admissions roadmap.</h2>
-        <p>Book a short consultation to discuss your student's goals and receive a clear plan for SAT prep, college strategy, or essay support.</p>
-        <div class="actions" style="justify-content:center"><a class="btn primary" href="https://calendly.com/ascendprep-co/30min" data-calendly>Book Free Consultation</a><a class="btn secondary" href="mailto:ascendprep.co@gmail.com">Email Ascend Prep</a></div>
-        <p style="font-size:.86rem;color:var(--dim);margin-top:18px">The consultation opens in a Calendly popup. If it does not load, it will open in a new tab.</p>
-      </div>
-    </section>
+    <section class="final-cta wrap" id="book"><div class="cta-card"><p class="eyebrow">Start here</p><h2>Get a free personalized SAT & admissions roadmap.</h2><p>Book a short consultation to discuss your student's goals and receive a clear plan for SAT prep, college strategy, or essay support.</p><div class="actions" style="justify-content:center"><a class="btn primary" href="https://calendly.com/ascendprep-co/30min" data-calendly>Book Free Consultation</a><a class="btn secondary" href="mailto:ascendprep.co@gmail.com">Email Ascend Prep</a></div></div></section>
   </main>
+
 
   <footer class="wrap">
     <div class="footer-grid">
-      <div class="brand"><img src="assets/icon.png" alt="Ascend logo"><span>Ascend Prep</span></div>
-      <div class="footer-links"><a href="#services">Services</a><a href="#app">App</a><a href="#founder">Founder</a><a href="mailto:ascendprep.co@gmail.com">ascendprep.co@gmail.com</a></div>
+      <a class="brand" href="index.html"><img src="assets/icon.png" alt="Ascend logo"><span>Ascend Prep</span></a>
+      <div class="footer-links">
+        <a href="sat-tutoring.html">SAT Tutoring</a>
+        <a href="college-consulting.html">College Consulting</a>
+        <a href="index.html#app">Ascend App</a>
+        <a href="mailto:ascendprep.co@gmail.com">ascendprep.co@gmail.com</a>
+      </div>
     </div>
     <p style="margin-top:20px;font-size:.86rem">© 2026 Ascend Prep. SAT and college admissions outcomes are not guaranteed. Ascend Prep is not affiliated with College Board, MIT, Princeton, or Yale.</p>
   </footer>
-
-  <script>
-    const nav = document.getElementById('nav');
-    const menu = document.getElementById('menu');
-    menu?.addEventListener('click', () => nav.classList.toggle('open'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
-
-    const calendlyUrl = 'https://calendly.com/ascendprep-co/30min';
-    function openCalendly(event) {
-      event.preventDefault();
-      if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
-        window.Calendly.initPopupWidget({ url: calendlyUrl });
-      } else {
-        window.open(calendlyUrl, '_blank', 'noopener,noreferrer');
-      }
-    }
-    document.querySelectorAll('[data-calendly]').forEach(link => link.addEventListener('click', openCalendly));
-
-  </script>
+  <script src="assets/script.js"></script>
 </body>
 </html>
